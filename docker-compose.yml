@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  nginx:
+    image: jwilder/nginx-proxy
+    container_name: labo-nginx
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      kevin-network:
+  server1:
+    build: ./server1
+    profiles: ["servers"]
+    container_name: labo-server1
+    environment:
+      - VIRTUAL_HOST=api.server1.net
+      - VIRTUAL_PORT=3000
+    ports:
+      - "3000:3000"
+    networks:
+      kevin-network:
+  server2:
+    build: ./server2
+    profiles: 
+      - servers
+      - server2
+    container_name: labo-server2
+    environment:
+      - VIRTUAL_HOST=api.server2.net
+      - VIRTUAL_PORT=3001
+    ports:
+      - "3001:3000"
+    networks:
+      kevin-network:
+networks:
+  kevin-network:

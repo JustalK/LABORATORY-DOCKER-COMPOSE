@@ -1,0 +1,22 @@
+{
+  "name": "laboratory-docker-compose",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "docker-compose up -d --build",
+    "start:servers": "docker-compose --profile servers up -d --build",
+    "start:server2": "docker-compose --profile server2 up -d --build",
+    "stop": "docker-compose stop"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JustalK/LABORATORY-DOCKER-COMPOSE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JustalK/LABORATORY-DOCKER-COMPOSE/issues"
+  },
+  "homepage": "https://github.com/JustalK/LABORATORY-DOCKER-COMPOSE#readme"
+}
